@@ -1,0 +1,6 @@
+Hello <%= @appointment_request.guest_name %>,
+
+Your appointment request for "<%= @appointment_request.service.name %>" with <%= @appointment_request.nutritionist.name %> was <%= @appointment_request.status %>.
+
+Starts at: <%= @appointment_request.starts_at %>
+Ends at: <%= @appointment_request.ends_at %>
