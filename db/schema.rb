@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2026_03_03_105912) do
+ActiveRecord::Schema[7.2].define(version: 2026_03_03_145500) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -18,13 +18,14 @@ ActiveRecord::Schema[7.2].define(version: 2026_03_03_105912) do
     t.bigint "nutritionist_id", null: false
     t.bigint "service_id", null: false
     t.string "guest_name"
-    t.string "guest_email"
+    t.string "guest_email", null: false
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.integer "status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["guest_email", "status"], name: "index_appointment_requests_on_guest_email_and_status"
+    t.index ["guest_email"], name: "index_unique_pending_request_per_email", unique: true, where: "(status = 0)"
     t.index ["nutritionist_id", "status", "starts_at", "ends_at"], name: "index_appointReq_nutri_status_time"
     t.index ["nutritionist_id"], name: "index_appointment_requests_on_nutritionist_id"
     t.index ["service_id"], name: "index_appointment_requests_on_service_id"

@@ -4,7 +4,7 @@ class CreateAppointmentRequests < ActiveRecord::Migration[7.2]
       t.references :nutritionist, null: false, foreign_key: true
       t.references :service, null: false, foreign_key: true
       t.string :guest_name
-      t.string :guest_email
+      t.string :guest_email, null: false
       t.datetime :starts_at
       t.datetime :ends_at
       t.integer :status, null: false, default: 0

@@ -7,7 +7,13 @@ class AppointmentRequest < ApplicationRecord
   validates :guest_name, :guest_email, :starts_at, :ends_at, :status, presence: true
   validate :ends_after_starts
 
+  before_validation :normalize_guest_email
+
   private
+
+  def normalize_guest_email
+    self.guest_email = guest_email.to_s.strip.downcase
+  end
 
   def ends_after_starts
     return if starts_at.blank? || ends_at.blank?
