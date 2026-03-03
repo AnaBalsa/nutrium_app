@@ -7,13 +7,13 @@ class CreateAppointmentRequests < ActiveRecord::Migration[7.2]
       t.string :guest_email
       t.datetime :starts_at
       t.datetime :ends_at
-      t.integer :status, null: false, default: 0 
+      t.integer :status, null: false, default: 0
 
       t.timestamps
     end
-  
-    add_index :appointment_requests, [:guest_email, :status]
-    add_index :appointment_requests, [:nutritionist_id, :status, :starts_at, :ends_at], 
+
+    add_index :appointment_requests, [ :guest_email, :status ]
+    add_index :appointment_requests, [ :nutritionist_id, :status, :starts_at, :ends_at ],
               name: "index_appointReq_nutri_status_time"
   end
 end
