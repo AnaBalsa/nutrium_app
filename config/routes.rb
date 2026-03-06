@@ -12,4 +12,22 @@ Rails.application.routes.draw do
   root "search#index"
 
   resources :appointment_requests, only: [ :create ]
+
+  # Nutritionist flow
+  resources :nutritionists, only: [ :index ] do
+    member do
+      get :pending_requests
+    end
+  end
+
+  # Nutritionist dashboard - React page
+  namespace :api do
+    resources :nutritionists, only: [] do
+      resources :appointment_requests, only: [ :index ]
+    end
+
+    resources :appointment_requests, only: [] do
+      patch :decide, on: :member
+    end
+  end
 end
