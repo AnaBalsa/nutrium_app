@@ -33,7 +33,7 @@ nutritionists.each do |name|
     name: "Initial Appointment",
     price: rand(4000..9000),
     currency: "EUR",
-    duration_minutes: [30, 45, 60].sample,
+    duration_minutes: [ 30, 45, 60 ].sample,
     location_name: "Braga",
     location_lat: braga_coords[:lat],
     location_lng: braga_coords[:lng]
@@ -44,10 +44,10 @@ nutritionists.each do |name|
 
     Service.create!(
       nutritionist: nutritionist,
-      name: ["Initial Appointment", "Personalized Meal Plan", "Follow-up", "Sports Nutrition"].sample,
+      name: [ "Initial Appointment", "Personalized Meal Plan", "Follow-up", "Sports Nutrition" ].sample,
       price: rand(4000..9000),
       currency: "EUR",
-      duration_minutes: [30, 45, 60].sample,
+      duration_minutes: [ 30, 45, 60 ].sample,
       location_name: city_name,
       location_lat: coords[:lat],
       location_lng: coords[:lng]
