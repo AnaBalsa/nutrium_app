@@ -1,0 +1,11 @@
+<h1>Nutritionists</h1>
+
+<ul>
+  <% @nutritionists.each do |n| %>
+    <li>
+      <strong><%= n.name %></strong>
+      —
+      <%= link_to "Open Pending Requests", pending_requests_nutritionist_path(n) %>
+    </li>
+  <% end %>
+</ul>
